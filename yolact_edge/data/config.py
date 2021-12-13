@@ -192,8 +192,8 @@ dglass_dataset = dataset_base.copy({
     'valid_images': './data/dataset/images/',
     'valid_info':   './data/dataset/annotations/instances_Validation.json',
 
-    'label_map': DGLASS_LABEL_MAP
-    'class_names': DGLASS_CLASSES,
+    'label_map': DGLASS_LABEL_MAP,
+    'class_names': DGLASS_CLASSES
 })
 
 coco2017_dataset = dataset_base.copy({
