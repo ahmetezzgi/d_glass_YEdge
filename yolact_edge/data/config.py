@@ -54,6 +54,10 @@ COCO_LABEL_MAP = { 1:  1,  2:  2,  3:  3,  4:  4,  5:  5,  6:  6,  7:  7,  8:  8
                   74: 65, 75: 66, 76: 67, 77: 68, 78: 69, 79: 70, 80: 71, 81: 72,
                   82: 73, 84: 74, 85: 75, 86: 76, 87: 77, 88: 78, 89: 79, 90: 80}
 
+DGLASS_CLASSES = ('catlak','ekstrem_sivi')
+
+DGLASS_LABEL_MAP = { 1:  1,  2:  2}
+
 YOUTUBE_VIS_CLASSES = ('person', 'giant_panda', 'lizard', 'parrot', 'skateboard',
                        'sedan', 'ape', 'dog', 'snake', 'monkey', 'hand', 'rabbit',
                        'duck', 'cat', 'cow', 'fish', 'train', 'horse', 'turtle',
@@ -176,6 +180,20 @@ coco2014_dataset = dataset_base.copy({
     'valid_info': './data/coco/annotations/instances_val2014.json',
 
     'label_map': COCO_LABEL_MAP
+})
+
+dglass_dataset = dataset_base.copy({
+    'name': 'dglass',
+    
+    'train_images': './data/dataset/images/',
+    'train_info':   './data/dataset/annotations/instances_Train.json',
+    
+    # Validation images and annotations.
+    'valid_images': './data/dataset/images/',
+    'valid_info':   './data/dataset/annotations/instances_Validation.json',
+
+    'label_map': DGLASS_LABEL_MAP,
+    'class_names': DGLASS_CLASSES
 })
 
 coco2017_dataset = dataset_base.copy({
@@ -725,8 +743,8 @@ yolact_base_config = coco_base_config.copy({
     'name': 'yolact_base',
 
     # Dataset stuff
-    'dataset': coco2017_dataset,
-    'num_classes': len(coco2017_dataset.class_names) + 1,
+    'dataset': dglass_dataset,
+    'num_classes': len(dglass_dataset.class_names) + 1,
 
     # Image Size
     'max_size': 550,
@@ -739,7 +757,7 @@ yolact_base_config = coco_base_config.copy({
     'flow': flow_base,
     
     # Backbone Settings
-    'backbone': resnet101_backbone.copy({
+    'backbone': mobilenetv2_backbone.copy({
         'selected_layers': list(range(1, 4)),
         'use_pixel_scales': True,
         'preapply_sqrt': False,
