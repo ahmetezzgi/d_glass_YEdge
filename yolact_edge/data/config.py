@@ -391,7 +391,7 @@ mobilenetv2_arch = [
 
 mobilenetv2_backbone = backbone_base.copy({
     'name': 'MobileNetV2',
-    'path': 'yolact_edge_mobilenetv2_54_800000.pth',
+    'path': 'mobilenet_v2-b0353104.pth',
     'type': MobileNetV2Backbone,
     'args': (1.0, mobilenetv2_arch, 8),
     'transform': mobilenetv2_transform,
