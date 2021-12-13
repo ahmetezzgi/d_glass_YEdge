@@ -391,7 +391,7 @@ mobilenetv2_arch = [
 
 mobilenetv2_backbone = backbone_base.copy({
     'name': 'MobileNetV2',
-    'path': 'mobilenet_v2-b0353104.pth',
+    'path': 'yolact_edge_mobilenetv2_54_800000.pth',
     'type': MobileNetV2Backbone,
     'args': (1.0, mobilenetv2_arch, 8),
     'transform': mobilenetv2_transform,
@@ -757,7 +757,7 @@ yolact_base_config = coco_base_config.copy({
     'flow': flow_base,
     
     # Backbone Settings
-    'backbone': resnet101_backbone.copy({
+    'backbone': mobilenetv2_backbone.copy({
         'selected_layers': list(range(1, 4)),
         'use_pixel_scales': True,
         'preapply_sqrt': False,
